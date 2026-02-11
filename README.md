@@ -27,9 +27,9 @@ Assert statements of other severity levels will be reported, but not fail the wo
 
 ![Ripple Waveform](ripple_waveform.png)
 
-<!-- ## Top Level Sketch -->
+## Top Level Sketch
 
-<!-- ![Top Level Sketch](top_basys3_sketch.png) -->
+![Top Level Sketch](top_basys3_sketch.png)
 
 ## Documentation
 
