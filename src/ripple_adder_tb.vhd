@@ -49,7 +49,22 @@ begin
        w_addends <= x"FF"; w_Cin <= '1'; wait for 10 ns;
 	       assert (w_sum = x"F" and w_Cout = '1') report "bad with ones" severity failure;
        -- TODO, a few other test cases
-	
+
+       -- Easy-to-forget case: carry boundary (7 + 8 = F)
+       w_addends <= x"87"; w_Cin <= '0'; wait for 10 ns;
+           assert (w_sum = x"F" and w_Cout = '0')
+           report "bad with 7+8 Cin=0" severity failure;
+
+       -- Check Cin actually works (0 + 0 + Cin)
+       w_addends <= x"00"; w_Cin <= '1'; wait for 10 ns;
+           assert (w_sum = x"1" and w_Cout = '0')
+           report "bad with 0+0 Cin=1" severity failure;
+
+       -- One middle/random case (3 + 5 = 8)
+       w_addends <= x"53"; w_Cin <= '0'; wait for 10 ns;
+           assert (w_sum = x"8" and w_Cout = '0')
+           report "bad with 3+5 Cin=0" severity failure;
+		
 		wait; -- wait forever
 	end process;	
 	-----------------------------------------------------	
